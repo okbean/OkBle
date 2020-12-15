@@ -1,0 +1,53 @@
+<FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+
+        <com.qmuiteam.qmui.widget.QMUITopBar
+            android:id="@+id/topbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            app:qmui_topbar_bg_color="@color/colorPrimary"
+            app:qmui_topbar_separator_height="1px"
+            app:qmui_topbar_title_color="@color/white"
+            app:qmui_topbar_title_text_size="18sp"
+
+            app:qmui_topbar_subtitle_color="@color/white"
+            app:qmui_topbar_subtitle_text_size="12sp"
+
+            app:qmui_topbar_text_btn_color_state_list="@color/white"
+            app:qmui_topbar_title_gravity="center" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:background="@color/qmui_config_color_background"
+            android:fitsSystemWindows="true">
+
+            <com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
+                android:id="@+id/groupListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:qmui_list_item_height_higher="90dp"
+                app:qmui_list_item_height="90dp"/>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

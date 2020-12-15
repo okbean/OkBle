@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="easy_permissions_settings_confirm">Settings</string>
+    <string name="easy_permissions_settings_cancel">Cancel</string>
+    <string name="easy_permissions_prompt_access_location_permissions_rationale">OkBleDemo needs location permission.</string>
+
+
+    <string name="easy_permissions_prompt_manual_setting_required_permissions_rationale">Please click the Settings button below to grant OkBleDemo the location permission.</string>
+    <string name="easy_permissions_prompt_manual_setting_required_permissions_title">Permission denied</string>
+
+</resources>

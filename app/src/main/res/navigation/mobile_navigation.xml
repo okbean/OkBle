@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_devices">
+
+    <fragment
+        android:id="@+id/navigation_devices"
+        android:name="okble.demo.ui.devices.DevicesFragment"
+        android:label="@string/title_devices"
+        tools:layout="@layout/fragment_devices" />
+
+    <fragment
+        android:id="@+id/navigation_about"
+        android:name="okble.demo.ui.about.AboutFragment"
+        android:label="@string/title_about"
+        tools:layout="@layout/fragment_about" />
+
+
+</navigation>

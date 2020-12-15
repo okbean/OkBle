@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">OkBleDemo</string>
+
+    <string name="title_devices">Devices</string>
+    <string name="title_setting">Setting</string>
+    <string name="title_about">About</string>
+
+    <string name="btn_scan">Start Scan</string>
+
+    <string name="text_scan_device_prompt">Pull down to scan devices.</string>
+
+
+    <string name="text_prompt_location_setting">Scanning device should turn on the location setting.</string>
+
+    <string name="btn_ok">Ok</string>
+    <string name="btn_cancel">Cancel</string>
+
+
+</resources>

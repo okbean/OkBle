@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "okble.demo"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+    signingConfigs {
+        release {
+            storeFile file('./keys/okble.jks')
+            storePassword 'okble2020'
+            keyAlias 'okble'
+            keyPassword 'okble2020'
+        }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def buildType = variant.buildType.name
+            if("release".equalsIgnoreCase(buildType)){
+                outputFileName = "OkBleDemo_release_${variant.versionName}_${variant.versionCode}_${build_time()}.apk"
+            }else if("debug".equalsIgnoreCase(buildType)){
+                outputFileName = "OkBleDemo_debug_${variant.versionName}_${variant.versionCode}_${build_time()}.apk"
+            }
+        }
+    }
+
+
+
+
+
+}
+def build_time() {
+    return new Date().format("yyyy-MMdd-HHmm", TimeZone.getDefault())
+}
+def use_lib = false
+dependencies {
+//    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.navigation:navigation-fragment:2.3.2'
+    implementation 'androidx.navigation:navigation-ui:2.3.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'androidx.legacy:legacy-support-core-ui:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+
+    if(use_lib){
+        implementation files('libs/OkBle.jar')
+    }else{
+        implementation project(':OkBle')
+    }
+    implementation "pub.devrel:easypermissions:2.0.1"
+    implementation 'com.qmuiteam:qmui:1.4.4'
+
+    implementation 'com.github.okbean:OkBleScanner:1.3.0'
+
+}
