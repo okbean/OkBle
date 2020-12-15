@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 202
-        versionName "2.1.2"
+        versionCode 203
+        versionName "2.1.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -42,6 +42,6 @@ dependencies {
 task android_createJar(type: Jar) {
     archivesBaseName = 'OkBle'
     from(project.zipTree('build/intermediates/aar_main_jar/release/classes.jar'))
-    destinationDir = file('build/libs')
+    destinationDir = file('./')
 }
 android_createJar.dependsOn('build')
