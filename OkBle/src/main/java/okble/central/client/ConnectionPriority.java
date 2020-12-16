@@ -18,4 +18,14 @@ public enum ConnectionPriority {
         return this.value;
     }
 
+
+    public static ConnectionPriority valueOf(final int val){
+        for(ConnectionPriority v : values()){
+            if(v.value == val){
+                return v;
+            }
+        }
+        return null;
+    }
+
 }

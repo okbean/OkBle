@@ -47,5 +47,5 @@ public interface ClientOperation {
 
     boolean doReadRemoteRssi() throws OkBleException;
 
-    boolean doUpdateConnectionPriority(int connectionPriority) throws OkBleException;
+    boolean doSetConnectionPriority(int connectionPriority) throws OkBleException;
 }

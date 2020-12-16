@@ -1,5 +1,5 @@
 include ':app'
 include ':OkBle'
 
-rootProject.name = "OkBle"
+rootProject.name = "OkBleDemo"
 

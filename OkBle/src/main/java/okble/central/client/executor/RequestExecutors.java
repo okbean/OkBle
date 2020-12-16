@@ -70,8 +70,8 @@ public final class RequestExecutors {
                 break;
 
 
-            case UpdateConnectionPriorityRequest:
-                executor = new UpdateConnectionPriorityExecutor();
+            case SetConnectionPriorityRequest:
+                executor = new SetConnectionPriorityExecutor();
                 break;
             case UpdateConnectionParameterRequest:
                 executor = new UpdateConnectionParameterExecutor();

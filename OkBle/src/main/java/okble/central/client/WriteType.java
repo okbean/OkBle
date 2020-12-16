@@ -17,4 +17,13 @@ public enum WriteType {
     public int value(){
         return this.value;
     }
+
+    public static WriteType valueOf(final int val){
+        for(WriteType v : values()){
+            if(v.value == val){
+                return v;
+            }
+        }
+        return null;
+    }
 }

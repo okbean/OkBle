@@ -7,7 +7,7 @@ public final class SetConnectionPriorityRequest extends Request<Void>{
 
     private ConnectionPriority connectionPriority;
     private SetConnectionPriorityRequest(final  Builder builder){
-        super(Type.UpdateConnectionPriorityRequest);
+        super(Type.SetConnectionPriorityRequest);
         this.connectionPriority = builder.connectionPriority;
     }
 

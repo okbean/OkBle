@@ -1,6 +1,5 @@
 package okble.central.client;
 
-
 import static android.bluetooth.BluetoothDevice.PHY_OPTION_NO_PREFERRED;
 import static android.bluetooth.BluetoothDevice.PHY_OPTION_S2;
 import static android.bluetooth.BluetoothDevice.PHY_OPTION_S8;
@@ -16,6 +15,15 @@ public enum PhyOptions {
     }
     public int value(){
         return this.value;
+    }
+
+    public static PhyOptions valueOf(final int val){
+        for(PhyOptions v : values()){
+            if(v.value == val){
+                return v;
+            }
+        }
+        return null;
     }
 
 }

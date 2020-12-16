@@ -529,7 +529,7 @@ public final class OkBleClient {
         return val;
     }
 
-    boolean doUpdateConnectionPriority(int connectionPriority) throws OkBleException{
+    boolean doSetConnectionPriority(int connectionPriority) throws OkBleException{
         checkReleased();
         checkConnected();
 
@@ -895,6 +895,9 @@ public final class OkBleClient {
             if(mDebuggable){
                 Log.d(TAG,  String.format("onConnectionUpdated. status:%d , data:%s", status, data));
             }
+            final GattOperationResult result = new GattOperationResult(status, gatt, data);
+            postEvent(OkBleEvent.setConnectionPriority(result), Request.Type.SetConnectionPriorityRequest);
+
             if(status == BluetoothGatt.GATT_SUCCESS){
                 fireOnConnectionUpdatedListeners(data);
             }

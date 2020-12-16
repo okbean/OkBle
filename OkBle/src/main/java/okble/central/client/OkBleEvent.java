@@ -24,7 +24,7 @@ public final class OkBleEvent {
 
     public static final int SET_MTU = 12;
 
-    public static final int UPDATED_CONNECTION_PRIORITY = 13;
+    public static final int SET_CONNECTION_PRIORITY = 13;
     public static final int UPDATED_CONNECTION_PARAMETER = 14;
 
     public static final int CLIENT_CLOSE = 15;
@@ -121,12 +121,15 @@ public final class OkBleEvent {
         return new OkBleEvent(SET_MTU, data);
     }
 
+    public static OkBleEvent setConnectionPriority(final GattOperationResult data){
+        return new OkBleEvent(SET_CONNECTION_PRIORITY, data);
+    }
+
 //    public static OkBleEvent updateConnectionParameter(final GattOperationResult data){
 //        return new OkBleEvent(UPDATED_CONNECTION_PARAMETER, data);
 //    }
-//    public static OkBleEvent updateConnectionPriority(final GattOperationResult data){
-//        return new OkBleEvent(UPDATED_CONNECTION_PRIORITY, data);
-//    }
+
+
 
     @Override
     public String toString() {

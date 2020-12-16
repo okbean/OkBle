@@ -3,6 +3,7 @@ package okble.central.client.executor;
 import android.bluetooth.BluetoothGatt;
 
 import okble.central.client.ClientOperation;
+import okble.central.client.PhyMask;
 import okble.central.client.util.EventFilterOfTime;
 import okble.central.client.GattOperationResult;
 import okble.central.client.OkBleEvent;
@@ -21,8 +22,8 @@ final class SetPreferredPhyExecutor extends RequestExecutor {
     public void executeRequest(ClientOperation client, OkBleTask0 task, Request<?> request0) {
         final SetPreferredPhyRequest request = (SetPreferredPhyRequest)request0;
 
-        final int txPhy = request.txPhy().value();
-        final int rxPhy = request.rxPhy().value();
+        final int txPhy = PhyMask.value(request.txPhy());
+        final int rxPhy = PhyMask.value(request.rxPhy());
         final int phyOptions = request.phyOptions().value();
 
         try{
@@ -48,6 +49,7 @@ final class SetPreferredPhyExecutor extends RequestExecutor {
         }catch (Exception ex2){
             task.callOnFailed(new OkBleException(ex2), false);
         }
+
     }
 
 

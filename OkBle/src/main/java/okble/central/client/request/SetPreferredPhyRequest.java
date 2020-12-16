@@ -7,8 +7,8 @@ import okble.central.client.PhyMask;
 
 public final class SetPreferredPhyRequest extends Request<Phy>{
 
-    private PhyMask txPhy;
-    private PhyMask rxPhy;
+    private PhyMask[] txPhy;
+    private PhyMask[] rxPhy;
     private PhyOptions phyOptions;
 
 
@@ -19,11 +19,11 @@ public final class SetPreferredPhyRequest extends Request<Phy>{
         this.phyOptions = builder.phyOptions;
     }
 
-    public PhyMask txPhy() {
+    public PhyMask[] txPhy() {
         return txPhy;
     }
 
-    public PhyMask rxPhy() {
+    public PhyMask[] rxPhy() {
         return rxPhy;
     }
 
@@ -32,16 +32,16 @@ public final class SetPreferredPhyRequest extends Request<Phy>{
     }
 
     public final static class Builder {
-        private PhyMask txPhy;
-        private PhyMask rxPhy;
+        private PhyMask[] txPhy;
+        private PhyMask[] rxPhy;
         private PhyOptions phyOptions;
 
-        public Builder txPhy(PhyMask txPhy) {
+        public Builder txPhy(PhyMask... txPhy) {
             this.txPhy = txPhy;
             return this;
         }
 
-        public Builder rxPhy(PhyMask rxPhy) {
+        public Builder rxPhy(PhyMask... rxPhy) {
             this.rxPhy = rxPhy;
             return this;
         }
@@ -53,8 +53,8 @@ public final class SetPreferredPhyRequest extends Request<Phy>{
 
         public SetPreferredPhyRequest build() {
 
-            check(txPhy != null, "txPhy can not be null!");
-            check(rxPhy != null, "rxPhy can not be null!");
+            check(txPhy != null && txPhy.length > 0, "txPhy can not be null or zero length!");
+            check(rxPhy != null && rxPhy.length > 0, "rxPhy can not be null or zero length!");
             check(phyOptions != null, "phyOptions can not be null!");
 
             return new SetPreferredPhyRequest(this);

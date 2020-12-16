@@ -110,8 +110,8 @@ final class OkBleClientOperation implements ClientOperation{
     }
 
     @Override
-    public boolean doUpdateConnectionPriority(int connectionPriority) throws OkBleException {
-        return client.doUpdateConnectionPriority(connectionPriority);
+    public boolean doSetConnectionPriority(int connectionPriority) throws OkBleException {
+        return client.doSetConnectionPriority(connectionPriority);
     }
 
 

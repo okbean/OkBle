@@ -27,7 +27,7 @@ public abstract class Request<T> {
         ReadRemoteRssiRequest,
         SetMtuRequest,
 
-        UpdateConnectionPriorityRequest,
+        SetConnectionPriorityRequest,
         UpdateConnectionParameterRequest,
 
         RemoveBondRequest,

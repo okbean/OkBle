@@ -47,10 +47,7 @@ import okble.central.client.util.Hex;
 import okble.demo.util.OnePacketReceiverFactory;
 import okble.demo.util.UuidUtils;
 
-import static android.bluetooth.BluetoothDevice.PHY_LE_1M_MASK;
-import static android.bluetooth.BluetoothDevice.PHY_LE_2M_MASK;
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -410,7 +407,7 @@ public class OkBleClientTest {
     public void testSetPreferredPhy(){
         final SetPreferredPhyRequest req = new SetPreferredPhyRequest.Builder()
                 .phyOptions(PhyOptions.S2)
-                .rxPhy(PhyMask.LE_1M)
+                .rxPhy(PhyMask.LE_1M, PhyMask.LE_2M)
                 .txPhy(PhyMask.LE_2M)
                 .build();
         final OkBleTask<Phy> task = sClient.newTask(req);
@@ -419,32 +416,6 @@ public class OkBleClientTest {
         assertTrue(task.isSuccess());
         final Phy val = task.getResult();
         Log.i(TAG, "testSetPreferredPhy success! Phy:" + val);
-    }
-
-
-    @Test
-    public void testPhyMask(){
-        PhyMask val0 = PhyMask.valueOf(7);
-        assertTrue(val0 == PhyMask.LE_1M_OR_2M_OR_CODED);
-
-        PhyMask val1 = PhyMask.valueOf(PHY_LE_1M_MASK);
-        assertTrue(val1 == PhyMask.LE_1M);
-
-        PhyMask val2 = PhyMask.valueOf(PHY_LE_1M_MASK | PHY_LE_2M_MASK);
-        assertTrue(val2 == PhyMask.LE_1M_OR_2M);
-
-        PhyMask val3 = PhyMask.valueOf(0);
-        assertTrue(val3 == null);
-    }
-
-
-
-
-    @Test
-    public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("okble.demo", appContext.getPackageName());
     }
 
     private void doConnect0(){
