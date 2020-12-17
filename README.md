@@ -113,6 +113,57 @@ client.close();
 ```
 
 
+### 写特征值(发送数据)
+```
+        final UUID service = xxx;
+        final UUID characteristic = xxx; 
+        final byte[] data = xxx;
+        final WriteCharacteristicRequest req = new WriteCharacteristicRequest.Builder()
+                .service(service)
+                .characteristic(characteristic)
+                .writeType(WriteType.WriteNoResponse)
+                .packetSenderFactory( data,  20)//每包最大20个字节，超过20个字节将会分包发送
+                .build();
+        final OkBleTask<Void> task = client.newTask(req); 
+        task.addOnCompleteListener(new OnCompleteListener<Void>(){
+            @Override
+            public void onComplete(OkBleTask<Void> task) {
+                if(task.isSuccess()){
+                    //发送成功
+                }else{
+                   //发送失败
+                }
+            }
+        }).enqueue();
+        
+```
+
+### 写描述符
+```
+        final UUID service = xxx;
+        final UUID characteristic = xxx; 
+        final UUID descriptor =  xxx;
+        final byte[] data = xxx;
+        final ReadDescriptorRequest req = new ReadDescriptorRequest.Builder()
+                .service(service)
+                .characteristic(characteristic) 
+                .descriptor(descriptor)
+                .packetSenderFactory( data,  20)//每包最大20个字节，超过20个字节将会分包发送
+                .build();
+        final OkBleTask<Void> task = client.newTask(req); 
+        task.addOnCompleteListener(new OnCompleteListener<Void>(){
+            @Override
+            public void onComplete(OkBleTask<Void> task) {
+                if(task.isSuccess()){
+                    //发送成功
+                }else{
+                   //发送失败
+                }
+            }
+        }).enqueue();
+        
+```
+
 
 
 
