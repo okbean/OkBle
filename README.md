@@ -219,7 +219,22 @@ client.close();
         });
         task.enqueue();
 ```
-
+### 设置MTU
+```
+        final SetMtuRequest req = new SetMtuRequest.Builder()
+                .mtu(512).build();
+        final OkBleTask<Mtu> task = client.newTask(req);
+        task.addOnCompleteListener(new OnCompleteListener<Mtu>(){
+            @Override
+            public void onComplete(OkBleTask<Mtu> task) {
+                if(task.isSuccess()){
+                    //设置成功，返回与设备协商好的MTU，可能比预设的MTU要小
+                    final Mtu mtu = task.getResult();
+                }else{
+                   //设置失败
+                }
+            }
+        }).enqueue();
 
 
 
