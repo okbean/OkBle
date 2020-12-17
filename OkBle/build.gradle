@@ -42,6 +42,6 @@ dependencies {
 task android_createJar(type: Jar) {
     archivesBaseName = 'OkBle'
     from(project.zipTree('build/intermediates/aar_main_jar/release/classes.jar'))
-    destinationDir = file('./')
+    destinationDir = file('../')
 }
 android_createJar.dependsOn('build')
