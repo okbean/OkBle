@@ -32,3 +32,14 @@ final OkBleClient client = new OkBleClient.Builder()
         
         
 ```
+### 断开设备
+```
+client.close();
+```
+
+
+
+
+
+
+
