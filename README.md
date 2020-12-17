@@ -20,8 +20,8 @@ final OkBleClient client = new OkBleClient.Builder()
  final ConnectionRequest request = new ConnectionRequest.Builder().build();
  final OkBleTask<Void> task = client.newTask(req);
  task.addOnCompleteListener(new OnCompleteListener<Void>(){
-            @Override
-            public void onComplete(OkBleTask<Void> task) {
+        @Override
+        public void onComplete(OkBleTask<Void> task) {
                 if(task.isSuccess()){
                     //连接成功
                 }else{
