@@ -62,7 +62,7 @@ final OkBleClient client = new OkBleClient.Builder()
         
         
 ```
-### 断开设备
+### 断开与设备的连接
 ```
 client.close();
 ```
