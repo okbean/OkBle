@@ -165,6 +165,62 @@ client.close();
 ```
 
 
+### 读特征值
+```
+        final UUID service = xxx;
+        final UUID characteristic =  xxx;
+        final ReadCharacteristicRequest req = new ReadCharacteristicRequest.Builder()
+                .service(service)
+                .characteristic(characteristic)
+                .build();
+        final OkBleTask<byte[]> task = client.newTask(req); 
+        task.addOnSuccessListener(new OnSuccessListener<byte[]>(){
+            @Override
+            public void onSuccess(OkBleTask<byte[]> task, byte[] bytes) {
+                //读取成功，收到数据bytes
+            }
+        });
+
+        task.addOnFailedListener(new OnFailedListener<byte[]>(){
+
+            @Override
+            public void onFailed(OkBleTask<byte[]> task, OkBleException ex) {
+                //读取失败，收到异常ex
+            }
+        });
+        task.enqueue();
+```
+
+### 读描述符
+```
+        final UUID service = xxx;
+        final UUID characteristic =  xxx;
+        final UUID descriptor = xxx;
+
+        final ReadDescriptorRequest req = new ReadDescriptorRequest.Builder()
+                .service(service)
+                .characteristic(characteristic)
+                .descriptor(descriptor)
+                .build();
+        final OkBleTask<byte[]> task = client.newTask(req); 
+        task.addOnSuccessListener(new OnSuccessListener<byte[]>(){
+            @Override
+            public void onSuccess(OkBleTask<byte[]> task, byte[] bytes) {
+                //读取成功，收到数据bytes
+            }
+        });
+
+        task.addOnFailedListener(new OnFailedListener<byte[]>(){
+
+            @Override
+            public void onFailed(OkBleTask<byte[]> task, OkBleException ex) {
+                //读取失败，收到异常ex
+            }
+        });
+        task.enqueue();
+```
+
+
 
 
 
