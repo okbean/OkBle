@@ -26,6 +26,7 @@ import okble.central.scanner.BleScanResult;
 import okble.central.scanner.OkBleScanner;
 import okble.demo.R;
 import okble.demo.ui.device.DeviceActivity;
+import okble.demo.ui.device2.DeviceActivity2;
 import okble.demo.util.Utils;
 
 public class DevicesFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, DevicesAdapter.OnItemClickListener{
@@ -119,7 +120,7 @@ public class DevicesFragment extends Fragment implements SwipeRefreshLayout.OnRe
     @Override
     public void onItemClick(BleScanResult device) {
         OkBleScanner.getDefault().stopScan();
-        DeviceActivity.launch(getActivity(), device.device());
+        DeviceActivity2.launch(getActivity(), device.device());
     }
 
     @Override

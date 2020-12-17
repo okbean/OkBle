@@ -25,6 +25,12 @@
             android:name=".ui.device.DeviceActivity"
             android:theme="@style/QMUI.Compat.NoActionBar"/>
 
+        <activity
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            android:name=".ui.device2.DeviceActivity2"
+            android:theme="@style/QMUI.Compat.NoActionBar"/>
+
     </application>
 
 

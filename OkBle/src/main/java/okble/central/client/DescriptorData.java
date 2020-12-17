@@ -61,6 +61,13 @@ public final class DescriptorData {
                 descriptor.getValue());
     }
 
+    public static DescriptorData from(BluetoothGattDescriptor descriptor,  byte[] data){
+        return new DescriptorData(descriptor.getCharacteristic().getService().getUuid() ,
+                descriptor.getCharacteristic().getUuid(),
+                descriptor.getUuid(),
+                data);
+    }
+
 
     @Override
     public String toString() {

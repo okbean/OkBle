@@ -8,6 +8,41 @@ public final class UuidUtils {
     private final static String UUID_PAR = "0000%s-0000-1000-8000-00805f9b34fb";
 
 
+    private final static String UUID_CCCD = "00002902-0000-1000-8000-00805f9b34fb";
+
+
+    public static boolean isCccd(final String uuid){
+        return UUID_CCCD.equalsIgnoreCase(uuid);
+    }
+
+    public static boolean isCccd(final UUID uuid){
+        return isCccd(uuid == null ? null : uuid.toString());
+    }
+
+
+    public static String getShortUuid(final String uuid){
+        if(canBeShortUuid(uuid)){
+            return uuid.toLowerCase().substring(4, 8);
+        }
+        return "";
+    }
+
+    public static String getShortUuid(final UUID uuid){
+        return getShortUuid(uuid == null ? null : uuid.toString());
+    }
+
+    public static boolean canBeShortUuid(final String uuid){
+        if(uuid == null || uuid.length() != 36){
+            return false;
+        }
+        final String lowerUuid = uuid.toLowerCase();
+        if(lowerUuid.startsWith("0000") &&
+                lowerUuid.startsWith("0000-1000-8000-00805f9b34fb", 9)){
+            return true;
+        }
+        return false;
+    }
+
     public static UUID fromShortHex(final String hexStr){
         checkShortHex(hexStr);
         final String str = String.format(UUID_PAR, hexStr);

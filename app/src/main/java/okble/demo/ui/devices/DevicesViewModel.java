@@ -49,9 +49,9 @@ public class DevicesViewModel extends AndroidViewModel {
         scanner.clearScanListeners();
         final ScanConfig config = new ScanConfig.Builder()
                 .scanPeriodCount(1)
-                .scanDelay(5_000L)
+                .scanDelay(2_000L)
                 .scanInterval(5_000L)
-                .scanPeriod(20_000L)
+                .scanPeriod(6_000L)
                 .build();
         scanner.addScanListener(mBleScanListener);
         scanner.startScan(getApplication(), config);

@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="item_uuid_name_text_size">16dp</dimen>
+    <dimen name="item_uuid_text_size">14dp</dimen>
+    <dimen name="item_uuid_value_text_size">14dp</dimen>
+    <dimen name="item_uuid_property_text_size">14dp</dimen>
+    <dimen name="item_service_type_text_size">14dp</dimen>
+</resources>

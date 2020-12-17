@@ -769,6 +769,9 @@ public final class OkBleClient {
         public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
             if(mDebuggable){
                 Log.d(TAG,  String.format("onConnectionStateChange. status:%d , newState:%d", status, newState));
+                if(mDebugBluetoothGattCallback != null){
+                    mDebugBluetoothGattCallback.onConnectionStateChange(OkBleClient.this, status, newState);
+                }
             }
 
             final GattOperationResult result = new GattOperationResult(status, gatt, GattConnectionState.of(newState));
@@ -791,6 +794,9 @@ public final class OkBleClient {
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
             if(mDebuggable){
                 Log.d(TAG,  String.format("onServicesDiscovered. status:%d", status));
+                if(mDebugBluetoothGattCallback != null){
+                    mDebugBluetoothGattCallback.onServicesDiscovered(OkBleClient.this, status);
+                }
             }
             final GattOperationResult result = new GattOperationResult(status, gatt, gatt.getServices());
             postEvent(OkBleEvent.discoverServices(result), Request.Type.ConnectionRequest);
@@ -801,6 +807,9 @@ public final class OkBleClient {
             final CharacteristicData data = CharacteristicData.from(characteristic);
             if(mDebuggable){
                 Log.d(TAG,  String.format("onCharacteristicChanged. data:%s", data));
+                if(mDebugBluetoothGattCallback != null){
+                    mDebugBluetoothGattCallback.onCharacteristicChanged(OkBleClient.this, data);
+                }
             }
             final GattOperationResult result = new GattOperationResult(BluetoothGatt.GATT_SUCCESS, gatt, data);
             postEvent(OkBleEvent.characteristicChanged(result),Request.Type.WriteCharacteristicForResponseRequest);
@@ -810,10 +819,14 @@ public final class OkBleClient {
 
         @Override
         public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
+            final CharacteristicData data = CharacteristicData.from(characteristic);
             if(mDebuggable){
                 Log.d(TAG,  String.format("onCharacteristicWrite. status:%d", status));
+                if(mDebugBluetoothGattCallback != null){
+                    mDebugBluetoothGattCallback.onCharacteristicWrite(OkBleClient.this, data, status);
+                }
             }
-            final GattOperationResult result = new GattOperationResult(status, gatt, CharacteristicData.from(characteristic));
+            final GattOperationResult result = new GattOperationResult(status, gatt, data);
             postEvent(OkBleEvent.writeCharacteristic(result));
         }
 
@@ -823,6 +836,9 @@ public final class OkBleClient {
             final CharacteristicData data = CharacteristicData.from(characteristic);
             if(mDebuggable){
                 Log.d(TAG,  String.format("onCharacteristicRead. status:%d , data:%s", status, data));
+                if(mDebugBluetoothGattCallback != null){
+                    mDebugBluetoothGattCallback.onCharacteristicRead(OkBleClient.this, data, status);
+                }
             }
             final GattOperationResult result = new GattOperationResult(status, gatt, data);
             postEvent(OkBleEvent.readCharacteristic(result));
@@ -834,6 +850,9 @@ public final class OkBleClient {
             final DescriptorData data = DescriptorData.from(descriptor);
             if(mDebuggable){
                 Log.d(TAG,  String.format("onDescriptorRead. status:%d , data:%s", status, data));
+                if(mDebugBluetoothGattCallback != null){
+                    mDebugBluetoothGattCallback.onDescriptorRead(OkBleClient.this, data, status);
+                }
             }
 
             final GattOperationResult result = new GattOperationResult(status, gatt, data);
@@ -842,11 +861,14 @@ public final class OkBleClient {
 
         @Override
         public void onDescriptorWrite(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status) {
+            final DescriptorData data = DescriptorData.from(descriptor);
             if(mDebuggable){
                 Log.d(TAG,  String.format("onDescriptorWrite. status:%d", status));
+                if(mDebugBluetoothGattCallback != null){
+                    mDebugBluetoothGattCallback.onDescriptorWrite(OkBleClient.this, data, status);
+                }
             }
-
-            final GattOperationResult result = new GattOperationResult(status, gatt, DescriptorData.from(descriptor));
+            final GattOperationResult result = new GattOperationResult(status, gatt, data);
             postEvent(OkBleEvent.writeDescriptor(result));
         }
 
@@ -854,6 +876,9 @@ public final class OkBleClient {
         public void onPhyUpdate(BluetoothGatt gatt, int txPhy, int rxPhy, int status) {
             if(mDebuggable){
                 Log.d(TAG,  String.format("onPhyUpdate. status:%d , txPhy:%d , rxPhy:%d", status, txPhy, rxPhy));
+                if(mDebugBluetoothGattCallback != null){
+                    mDebugBluetoothGattCallback.onPhyUpdate(OkBleClient.this, txPhy, rxPhy, status);
+                }
             }
 
             final GattOperationResult result = new GattOperationResult(status, gatt, Phy.of(txPhy, rxPhy));
@@ -865,6 +890,9 @@ public final class OkBleClient {
         public void onPhyRead(BluetoothGatt gatt, int txPhy, int rxPhy, int status) {
             if(mDebuggable){
                 Log.d(TAG,  String.format("onPhyRead. status:%d , txPhy:%d , rxPhy:%d", status, txPhy, rxPhy));
+                if(mDebugBluetoothGattCallback != null){
+                    mDebugBluetoothGattCallback.onPhyRead(OkBleClient.this, txPhy, rxPhy, status);
+                }
             }
             final GattOperationResult result = new GattOperationResult(status, gatt, Phy.of(txPhy, rxPhy));
             postEvent(OkBleEvent.readPhy(result), Request.Type.ReadPhyRequest);
@@ -875,6 +903,9 @@ public final class OkBleClient {
         public void onMtuChanged(BluetoothGatt gatt, int mtu, int status) {
             if(mDebuggable){
                 Log.d(TAG,  String.format("onMtuChanged. status:%d , mtu:%d", status, mtu));
+                if(mDebugBluetoothGattCallback != null){
+                    mDebugBluetoothGattCallback.onMtuChanged(OkBleClient.this, mtu, status);
+                }
             }
             final GattOperationResult result = new GattOperationResult(status, gatt, Mtu.of(mtu));
             postEvent(OkBleEvent.setMtu(result), Request.Type.SetMtuRequest);
@@ -884,6 +915,9 @@ public final class OkBleClient {
         public void onReadRemoteRssi(BluetoothGatt gatt, int rssi, int status) {
             if(mDebuggable){
                 Log.d(TAG,  String.format("onReadRemoteRssi. status:%d , rssi:%d", status, rssi));
+                if(mDebugBluetoothGattCallback != null){
+                    mDebugBluetoothGattCallback.onReadRemoteRssi(OkBleClient.this, rssi, status);
+                }
             }
             final GattOperationResult result = new GattOperationResult(status, gatt, Rssi.of(rssi));
             postEvent(OkBleEvent.readRemoteRssi(result), Request.Type.ReadRemoteRssiRequest);
@@ -894,6 +928,9 @@ public final class OkBleClient {
             final ConnectionParameter data = ConnectionParameter.of(interval, latency, timeout);
             if(mDebuggable){
                 Log.d(TAG,  String.format("onConnectionUpdated. status:%d , data:%s", status, data));
+                if(mDebugBluetoothGattCallback != null){
+                    mDebugBluetoothGattCallback.onConnectionUpdated(OkBleClient.this, interval, latency, timeout, status);
+                }
             }
             final GattOperationResult result = new GattOperationResult(status, gatt, data);
             postEvent(OkBleEvent.setConnectionPriority(result), Request.Type.SetConnectionPriorityRequest);
@@ -903,7 +940,12 @@ public final class OkBleClient {
             }
         }
 
-    };
+    }
+
+    private DebugBluetoothGattCallback mDebugBluetoothGattCallback;
+    public void setDebugBluetoothGattCallback(final DebugBluetoothGattCallback callback){
+        this.mDebugBluetoothGattCallback = callback;
+    }
 
 
     private void postEvent(OkBleEvent event){

@@ -1,0 +1,60 @@
+<FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+
+        <com.qmuiteam.qmui.widget.QMUITopBar
+            android:id="@+id/topbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            app:qmui_topbar_bg_color="@color/colorPrimary"
+            app:qmui_topbar_separator_height="1px"
+            app:qmui_topbar_title_color="@color/white"
+            app:qmui_topbar_title_text_size="16sp"
+            app:qmui_topbar_title_container_padding_horizontal="2dp"
+            app:qmui_topbar_text_btn_padding_horizontal="1dp"
+            app:qmui_topbar_subtitle_color="@color/white"
+            app:qmui_topbar_subtitle_text_size="13sp"
+            app:qmui_topbar_text_btn_color_state_list="@color/white"
+            app:qmui_topbar_title_gravity="center" />
+
+
+        <com.qmuiteam.qmui.widget.QMUITabSegment
+            android:id="@+id/tabs"
+            android:layout_gravity="bottom"
+            android:background="?attr/qmui_list_item_bg_with_border_top"
+            android:textSize="18sp"
+            app:qmui_tab_icon_position="top"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"/>
+
+        <View android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#9dababab"/>
+
+
+        <com.qmuiteam.qmui.widget.QMUIViewPager
+            android:id="@+id/pager"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:fitsSystemWindows="true"/>
+
+
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

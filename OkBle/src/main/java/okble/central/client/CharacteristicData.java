@@ -52,6 +52,11 @@ public final class CharacteristicData {
                 characteristic.getValue());
     }
 
+    public static CharacteristicData from(BluetoothGattCharacteristic characteristic, byte[] data){
+        return new CharacteristicData(characteristic.getService().getUuid() ,
+                characteristic.getUuid(),
+                data);
+    }
 
     @Override
     public String toString() {
