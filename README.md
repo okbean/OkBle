@@ -284,6 +284,24 @@ client.close();
         }).enqueue();
 ```
 
+### 读取PHY
+```
+        final ReadPhyRequest req = new ReadPhyRequest.Builder().build();
+        final OkBleTask<Phy> task = client.newTask(req);
+        task.addOnCompleteListener(new OnCompleteListener<Phy>(){
+            @Override
+            public void onComplete(OkBleTask<Phy> task) {
+                if(task.isSuccess()){
+                    //读取成功
+                    final Phy phy = task.getResult();
+                }else{
+                   //读取失败
+                }
+            }
+        }).enqueue();
+```
+
+
 
 ## 如何接入 ##
 直接引用OkBle.jar, 或者复制ble目录下的源码到工程，然后在build.gradle添加implementation project(':OkBle')，
