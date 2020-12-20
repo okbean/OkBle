@@ -70,7 +70,7 @@ final OkBleClient client = new OkBleClient.Builder()
             public void onConnectionStateChanged(OkBleClient client, ConnectionState newState, ConnectionState lastState) {
                 Log.i(TAG, "onConnectionStateChanged." + "newState:" + newState.toString() + " lastState:" + lastState.toString());
                 if(newState == ConnectionState.Connected){
-                    //已成功
+                    //已连接
                 }else if(newState == ConnectionState.Disconnected){
                     //连接断开
                 }else if(newState == ConnectionState.Connecting){
