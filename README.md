@@ -240,7 +240,9 @@ client.close();
 
 
 ## 如何接入 ##
-直接引用OkBle.jar, 或者implementation project(':OkBle')，或者以下两个步骤：
+直接引用OkBle.jar, 或者复制ble目录下的源码到工程，然后在build.gradle添加implementation project(':OkBle')，
+
+或者以下两个步骤：
 
 **1.在工程根目录的build.gradle添加:**
 ``` 
@@ -251,7 +253,7 @@ allprojects {
 }
 ```
 
-**2.在依赖OkBluetoothHook模块的build.gradle添加：**
+**2.在依赖OkBle模块的build.gradle添加：**
 ```
 dependencies {
     implementation 'com.github.okbean:OkBle:2.1.4
