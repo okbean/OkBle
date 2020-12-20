@@ -267,6 +267,23 @@ client.close();
         }).enqueue();
 ```
 
+### 读取RSSI
+```
+        final ReadRemoteRssiRequest req = new ReadRemoteRssiRequest.Builder().build();
+        final OkBleTask<Rssi> task = client.newTask(req);
+        task.addOnCompleteListener(new OnCompleteListener<Rssi>(){
+            @Override
+            public void onComplete(OkBleTask<Rssi> task) {
+                if(task.isSuccess()){
+                    //读取成功
+                    final Rssi rssi = task.getResult();
+                }else{
+                   //读取失败
+                }
+            }
+        }).enqueue();
+```
+
 
 ## 如何接入 ##
 直接引用OkBle.jar, 或者复制ble目录下的源码到工程，然后在build.gradle添加implementation project(':OkBle')，
