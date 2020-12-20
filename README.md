@@ -61,8 +61,26 @@ final OkBleClient client = new OkBleClient.Builder()
             }
         }).enqueue();
         
-        
 ```
+
+### 监听连接状态变化
+```
+        client.addOnConnectionStateChangedListener(new OnConnectionStateChangedListener(){
+            @Override
+            public void onConnectionStateChanged(OkBleClient client, ConnectionState newState, ConnectionState lastState) {
+                Log.i(TAG, "onConnectionStateChanged." + "newState:" + newState.toString() + " lastState:" + lastState.toString());
+                if(newState == ConnectionState.Connected){
+                    //已成功
+                }else if(newState == ConnectionState.Disconnected){
+                    //连接断开
+                }else if(newState == ConnectionState.Connecting){
+                   //连接中
+                }
+            }
+        });
+```
+
+
 ### 断开与设备的连接
 ```
 client.close();
@@ -90,6 +108,17 @@ client.close();
             }
         }).enqueue(); 
 ```
+
+### 监听/接收通知数据
+```
+        client.addOnDataReceivedListener(new OnDataReceivedListener(){
+            @Override
+            public void onDataReceived(OkBleClient client, CharacteristicData data) {
+                Log.i(TAG, "onDataReceived: (0x) " + Hex.toString(data.data(), '-'));
+            }
+        });
+```
+
 
 ### 关闭通知
 ```
